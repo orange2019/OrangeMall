@@ -1,4 +1,4 @@
-package com.orange.mall.orangemall;
+package com.orange.mall.app;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.orange.mall.orangemall;
+package com.orange.mall.app;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
