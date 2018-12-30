@@ -1,3 +1,33 @@
 <resources>
-  <string name="app_name">OrangeMall</string>
+  <string name="app_name">卡西慕商城</string>
+  <string name="title_home">首页</string>
+  <string name="title_property">资产</string>
+  <string name="title_profile">我的</string>
+
+  <string name="title_user_center">账户体系</string>
+  <string name="title_cells_showroom">细胞展厅</string>
+  <string name="title_points_mall">积分商城</string>
+  <string name="title_news">新闻资讯</string>
+
+
+  <string name="slogan_zh">谱写着生命永恒的美丽</string>
+  <string name="slogan_en">Compose the eternal beautiful of life</string>
+
+  <string name="title_activity_login">LoginActivity</string>
+  <string name="dummy_button">Dummy Button</string>
+  <string name="dummy_content">DUMMY\nCONTENT</string>
+  <string name="login">登录</string>
+  <string name="register">注册</string>
+  <string name="forget_pwd">忘记密码？</string>
+  <string name="user_register">用户注册</string>
+  <string name="title_activity_register">注册</string>
+  <string name="fetch_verify_code">获取验证码</string>
+  <string name="reset_passwd">请输入新密码</string>
+
+  <string name="home">Home</string>
+
+  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="confirm">确定</string>
+  <string name="loginlater">暂不登录</string>
+
 </resources>

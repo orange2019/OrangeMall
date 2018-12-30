@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/background_shape"
+  android:gravity="center_vertical"
+  android:orientation="vertical"
+  tools:context=".modules.splash.SplashActivity">
+
+  <ImageView
+    android:layout_width="169dp"
+    android:layout_height="169dp"
+    android:src="@drawable/brand"
+    android:layout_marginTop="60dp"
+    android:gravity="center"
+    android:layout_gravity="center"/>
+
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1">
+
+  </View>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/slogan__margin_bottom"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="12sp"
+      android:textColor="@color/white"
+      android:text="@string/slogan_zh"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="12sp"
+      android:textColor="@color/white"
+      android:text="@string/slogan_en"/>
+
+  </LinearLayout>
+
+</LinearLayout>

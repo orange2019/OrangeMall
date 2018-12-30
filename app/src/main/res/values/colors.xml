@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#008577</color>
-  <color name="colorPrimaryDark">#00574B</color>
-  <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="colorLogin">#4cc0e8</color>
+    <color name="colorRegister">#77aff7</color>
+
+    <color name="dividerColor">#ffffff</color>
+    <color name="normalColor">#888888</color>
+    <color name="activeColor">#008ce6</color>
+    <color name="actionBarColor">#007bff</color>
+    <color name="loginActionBarColor">#0d2f58</color>
+    <color name="viewPagerBgColor">#EDF0F5</color>
+
+    <color name="profileBg">#F0F2F4</color>
 </resources>
