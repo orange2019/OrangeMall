@@ -37,7 +37,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
     Callback<ResponseBean<String>> callback = new Callback<ResponseBean<String>>() {
       @Override
       public void onResponse(Call<ResponseBean<String>> call, Response<ResponseBean<String>> response) {
-        Log.i(TAG, response.toString());
+        Log.i(TAG, response.body().toString());
         if (response.body().getCode() == 0) {
           mView.onRegisterSuccess();
         } else {

@@ -50,7 +50,7 @@ public class SplashActivity extends AppCompatActivity {
     Application.initEnv();
 
     // 如果是第一次进来就打开登录界面，否则就直接进入MainActivity
-    if (Hawk.get(Storage.KEY_FIRST_TIME, true) || true) { // 第一次进来
+    if (Hawk.get(Storage.KEY_FIRST_TIME, true)) { // 第一次进来
       Intent intent = new Intent(this, LoginActivity.class);
       intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
       startActivity(intent);
