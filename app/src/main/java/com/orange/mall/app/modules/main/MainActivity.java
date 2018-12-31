@@ -1,7 +1,9 @@
 package com.orange.mall.app.modules.main;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -14,8 +16,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MenuItem;
+import android.webkit.JavascriptInterface;
 
 import com.github.javiersantos.appupdater.AppUpdater;
 import com.github.javiersantos.appupdater.AppUpdaterUtils;
@@ -27,12 +32,14 @@ import com.orange.mall.app.R;
 import com.orange.mall.app.adapters.ViewPagerFragmentAdapter;
 import com.orange.mall.app.constants.Api;
 import com.orange.mall.app.constants.Storage;
+import com.orange.mall.app.modules.login.LoginActivity;
 import com.orange.mall.app.utils.ActivityUtils;
 import com.orhanobut.hawk.Hawk;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class MainActivity extends AppCompatActivity
   implements CellsShowroomFragment.OnCellsShowroomFragmentInteractionListener,
@@ -91,6 +98,8 @@ UserCenterFragment.OnUserCenterFragmentInteractionListener {
     if (mHasInited) {
       return;
     }
+    // 计算Navigation 高度
+    saveNavigationHeight();
 
     this.initFragments();
     this.initViewPager();
@@ -102,6 +111,24 @@ UserCenterFragment.OnUserCenterFragmentInteractionListener {
 
 
     mHasInited = true;
+  }
+
+  public static int px2dip(Context context, float pxValue) {
+    float scale = context.getResources().getDisplayMetrics().density;
+    return (int) (pxValue / scale + 0.5f);
+  }
+
+
+  private void saveNavigationHeight () {
+
+    int navigationBarHeight = 0;
+    int resourceId = getResources().getIdentifier("navigation_bar_height", "dimen", "android");
+    if (resourceId > 0) {
+      navigationBarHeight = getResources().getDimensionPixelSize(resourceId);
+    }
+    int dp = px2dip(this, navigationBarHeight);
+    Log.i(TAG, String.format("NavigationHeight2: %d", dp));
+    Hawk.put(Storage.KEY_NAVIGATION_HEIGHT, dp);
   }
 
 
@@ -243,5 +270,11 @@ UserCenterFragment.OnUserCenterFragmentInteractionListener {
   @Override
   public void OnUserCenterFragmentInteractionListener(Uri uri) {
 
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    saveNavigationHeight();
   }
 }

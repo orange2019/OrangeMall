@@ -13,6 +13,7 @@ import com.orange.mall.app.R;
 import com.orange.mall.app.base.BaseFragment;
 import com.orange.mall.app.constants.Api;
 import com.orange.mall.app.constants.Storage;
+import com.orange.mall.app.jsbridge.JsInterfaceForAndroid;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,6 +52,14 @@ public class UserCenterFragment extends BaseFragment {
       throw new RuntimeException(context.toString()
         + " must implement OnNewsFragmentInteractionListener");
     }
+  }
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    mWebViewUtils2.addJavascriptInterface(
+      JsInterfaceForAndroid.getInstance().init(this.getActivity()),
+      "android");
   }
 
   @Override

@@ -15,6 +15,7 @@ import android.webkit.WebView;
 import com.orange.mall.app.utils.WebViewUtils2;
 
 interface BaseFragmentInterface {
+
   boolean onKeyDown(int keyCode, KeyEvent event);
 
   String getWebViewUrl();
@@ -22,6 +23,7 @@ interface BaseFragmentInterface {
   int getWebViewResourceId();
 
   int getLayoutResourceId();
+
 }
 
 
@@ -128,6 +130,13 @@ public abstract  class BaseFragment extends Fragment implements BaseFragmentInte
   }
 
   @Override
+  public void onResume() {
+    super.onResume();
+    // 计算webview的高度
+
+  }
+
+  @Override
   public void onStop() {
     Log.i(TAG, "onStop");
     super.onStop();
@@ -154,6 +163,5 @@ public abstract  class BaseFragment extends Fragment implements BaseFragmentInte
 
     return false;
   }
-
 
 }

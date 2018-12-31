@@ -19,12 +19,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:visibility="visible"
-    android:gravity="center">
+    android:gravity="top|center_horizontal">
 
     <WebView
       android:id="@+id/user_center_webview"
       android:layout_width="match_parent"
-      android:layout_height="match_parent" />
+      android:layout_height="match_parent"
+      android:layout_marginBottom="48dp"/>
 
   </LinearLayout>
 

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.orange.mall.app.R;
 import com.orange.mall.app.base.BaseFragment;
 import com.orange.mall.app.constants.Api;
+import com.orange.mall.app.jsbridge.JsInterfaceForAndroid;
 
 import static com.orange.mall.app.constants.Storage.KEY_TOKEN;
 
@@ -51,6 +52,14 @@ public class NewsFragment extends BaseFragment {
       throw new RuntimeException(context.toString()
         + " must implement OnNewsFragmentInteractionListener");
     }
+  }
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    mWebViewUtils2.addJavascriptInterface(
+      JsInterfaceForAndroid.getInstance().init(this.getActivity()),
+      "android");
   }
 
   @Override

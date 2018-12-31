@@ -7,8 +7,10 @@ import com.orange.mall.app.beans.request.BaseRequestBean;
 import com.orange.mall.app.beans.request.LoginBean;
 import com.orange.mall.app.beans.response.LoginResponseDataBean;
 import com.orange.mall.app.beans.response.ResponseBean;
+import com.orange.mall.app.constants.Storage;
 import com.orange.mall.app.manager.RequestManager;
 import com.orange.mall.app.models.AccountModel;
+import com.orhanobut.hawk.Hawk;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -88,6 +90,7 @@ public class LoginPresenter implements LoginContract.Presenter {
         Log.i(TAG, "Login onRespone: " + response.body().toString());
         if (response.body().getCode() == 0) {
           mView.onShowLoginState("successed");
+          Hawk.put(Storage.KEY_TOKEN, response.body().getData().getToken());
         } else {
           mView.onShowLoginState("failed");
         }
