@@ -189,6 +189,25 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
   }
 
 
+  /**
+   * 稍后登录
+   * @param view
+   */
+  public void onLoginLater(View view) {
+    // 跳转到MainActivity
+    gotoMainActivity();
+  }
+
+  /**
+   * 跳转到MainActivity
+   */
+  public void gotoMainActivity () {
+    Intent intent = new Intent(this, MainActivity.class);
+    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+    startActivity(intent);
+  }
+
+
   @Override
   public void onShowLoginState(String state) {
 
@@ -225,19 +244,4 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
   }
 
 
-  /**
-   * 稍后登录
-   * @param view
-   */
-  public void onLoginLater(View view) {
-    // 跳转到MainActivity
-    gotoMainActivity();
-  }
-
-
-  public void gotoMainActivity () {
-    Intent intent = new Intent(this, MainActivity.class);
-    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-    startActivity(intent);
-  }
 }

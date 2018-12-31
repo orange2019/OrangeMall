@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.orange.mall.app.beans.BaseRequestBean;
+import com.orange.mall.app.beans.request.BaseRequestBean;
 import com.orange.mall.app.constants.Secret;
 import com.orange.mall.app.utils.CryptUtils;
 import com.orange.mall.app.utils.MiscUtils;
@@ -71,6 +71,47 @@ public class RequestManager {
 
     Log.i(TAG, "RequestData: " + brb.toJson());
     return brb.toJson();
+  }
+
+  /**
+   *
+   * @param content
+   * @param clazz
+   * @param <T>
+   * @return
+   * @throws Exception
+   */
+  public <T> BaseRequestBean<T> buildRequestData (T content, Class<T> clazz) {
+    BaseRequestBean<T> brb = new BaseRequestBean<>(mUUID);
+
+    brb.setContent(content);
+
+    GsonBuilder gb = new GsonBuilder();
+    Gson gson = gb.create();
+    String contentJson = gson.toJson(content, clazz);
+
+    JSONObject json = null;
+    try {
+      json = new JSONObject(contentJson);
+    } catch (JSONException e) {
+      e.printStackTrace();
+    }
+    String query = json2query(json);
+    Log.i(TAG, "json2query: " + query);
+    String cryptedStr = CryptUtils.cryptWithHmacMD5(query, mUUID);
+    Log.i(TAG, "HmacMD5: " + cryptedStr);
+
+    byte[] sign = new byte[0];
+    try {
+      sign = CryptUtils.sign(cryptedStr.getBytes(), Secret.RSA_PRIVATE_KEY);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    Log.i(TAG, "encodeBytesToString: " + MiscUtils.bytesToHex(sign));
+    brb.setSign(MiscUtils.bytesToHex(sign));
+
+    Log.i(TAG, "RequestData: " + brb.toJson());
+    return brb;
   }
 
 

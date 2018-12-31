@@ -1,4 +1,4 @@
-package com.orange.mall.app.beans;
+package com.orange.mall.app.beans.request;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
