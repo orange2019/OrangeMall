@@ -97,7 +97,9 @@ UserCenterFragment.OnUserCenterFragmentInteractionListener {
 
     this.checkAppUpdate();
 
-    ActivityUtils.requestPermissions(this);
+    // ActivityUtils.requestPermissions(this);
+
+
 
     mHasInited = true;
   }

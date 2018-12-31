@@ -1,5 +1,6 @@
 package com.orange.mall.app.modules.register;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +26,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
   private TextInputEditText mVerifyCodeInput = null;
   private RegisterPresenter mPresenter = null;
 
+  ProgressDialog mDialog = null;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -44,6 +47,10 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     mPasswordTextInput = findViewById(R.id.password_input);
     mVerifyCodeInput = findViewById(R.id.verifycode_input);
     mInviteCodeInput = findViewById(R.id.invite_code_input);
+
+    mDialog = new ProgressDialog(this);
+    mDialog.setCancelable(false);
+    mDialog.setMessage("注册中...");
   }
 
   private void registerEvents () {
@@ -81,6 +88,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
    * @param view
    */
   public void onRegisterButtonClicked(View view) {
+    mDialog.show();
     getPresenter().register(getRegisterBean());
   }
 
@@ -109,12 +117,14 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
 
   @Override
   public void onRegisterSuccess() {
+    mDialog.dismiss();
     Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
     gotoLoginActivity();
   }
 
   @Override
   public void onRegisterFailed(@NotNull String error) {
+    mDialog.dismiss();
     Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
   }
 
