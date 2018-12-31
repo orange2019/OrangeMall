@@ -102,10 +102,5 @@ public class LoginPresenter implements LoginContract.Presenter {
 
   }
 
-  // 注册接口
-
-
-  // 修改密码
-
   
 }

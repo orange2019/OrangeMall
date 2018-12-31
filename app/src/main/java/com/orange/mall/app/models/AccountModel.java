@@ -4,7 +4,6 @@ import com.orange.mall.app.beans.request.ForgetPasswordBean;
 import com.orange.mall.app.beans.request.LoginBean;
 import com.orange.mall.app.beans.request.BaseRequestBean;
 import com.orange.mall.app.beans.request.RegisterBean;
-import com.orange.mall.app.beans.request.VerifyCodeBean;
 import com.orange.mall.app.beans.response.LoginResponseDataBean;
 import com.orange.mall.app.beans.response.ResponseBean;
 import com.orange.mall.app.constants.Api;
@@ -18,16 +17,15 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
+
 public class AccountModel {
+  private static final String TAG = AccountModel.class.getSimpleName();
+
 
   public interface AccountService {
     // 登录
     @POST(Api.LOGIN_PATH)
     Call<ResponseBean<LoginResponseDataBean>> login(@Body BaseRequestBean<LoginBean> reqBody);
-
-    // 发送验证码
-    @POST(Api.SEND_VERIFY_CODE_PATH)
-    Call<ResponseBean<String>> sendVerifyCode(@Body BaseRequestBean<VerifyCodeBean> reqBody);
 
     // 注册
     @POST(Api.REGISTER_PATH)

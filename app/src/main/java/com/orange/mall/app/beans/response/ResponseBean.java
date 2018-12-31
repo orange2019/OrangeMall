@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class ResponseBean<T> {
   @SerializedName("code")
-  private int code = -1;
+  private int code;
 
   @SerializedName("message")
   private String message = null;
@@ -15,7 +15,7 @@ public class ResponseBean<T> {
   private T data = null;
 
   public ResponseBean () {
-
+    code = -1;
   }
 
   public int getCode () {

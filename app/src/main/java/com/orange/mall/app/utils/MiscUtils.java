@@ -7,6 +7,9 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.content.FileProvider;
+import android.widget.Toast;
+
+import com.orange.mall.app.Application;
 
 import java.io.File;
 import java.io.IOException;
@@ -106,5 +109,13 @@ public class MiscUtils {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  /**
+   * 显示 message tip 提示
+   * @param message
+   */
+  public static void showMessageTip (String message) {
+    Toast.makeText(Application.getAppContext(), message, Toast.LENGTH_SHORT).show();
   }
 }
