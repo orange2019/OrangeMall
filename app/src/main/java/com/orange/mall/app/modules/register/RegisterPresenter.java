@@ -10,7 +10,6 @@ import com.orange.mall.app.beans.response.ResponseBean;
 import com.orange.mall.app.manager.RequestManager;
 import com.orange.mall.app.models.AccountModel;
 import com.orange.mall.app.models.common.CommonModel;
-import com.orange.mall.app.utils.MiscUtils;
 
 import retrofit2.Call;
 import retrofit2.Callback;

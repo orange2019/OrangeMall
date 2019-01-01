@@ -15,6 +15,7 @@ import com.orange.mall.app.R;
 import com.orange.mall.app.beans.request.RegisterBean;
 import com.orange.mall.app.beans.request.VerifyCodeBean;
 import com.orange.mall.app.modules.login.LoginActivity;
+import com.orange.mall.app.widgets.VerifyCodeButton;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -107,12 +108,16 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
    */
   public void sendVerifyCode (View view) {
     String mobile = mMobileTextInput.getText().toString();
-    if (mobile == null) {
-      Toast.makeText(this, "请输入手机号", Toast.LENGTH_SHORT).show();
+    if (mobile == null || mobile.length() != 11) {
+      Toast.makeText(this, "请输入正确的手机号", Toast.LENGTH_SHORT).show();
+      return ;
     }
+
     VerifyCodeBean bean = new VerifyCodeBean();
     bean.setMobile(mobile);
     getPresenter().sendVerifyCode(bean);
+    VerifyCodeButton button = (VerifyCodeButton) view;
+    button.start();
   }
 
   @Override
