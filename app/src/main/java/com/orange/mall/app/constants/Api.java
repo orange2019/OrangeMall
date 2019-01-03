@@ -47,7 +47,7 @@ public class Api {
   public static final String H5_MALL_PATH = "/mall";
 
   // 新闻
-  public static final String H5_NEWS = "/news?type=1";
+  public static final String H5_NEWS = "/news?type=2";
 
   // h5域名
   public static final String h5Domain (@NotNull String path) {
@@ -59,7 +59,5 @@ public class Api {
     return (env.equals(Env.TEST) ? TEST_API_DOMAIN : API_DOMAIN).concat(path);
   }
 
-
-  
 
 }

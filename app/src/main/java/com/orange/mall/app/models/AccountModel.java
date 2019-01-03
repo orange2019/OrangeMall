@@ -5,6 +5,7 @@ import com.orange.mall.app.beans.request.LoginBean;
 import com.orange.mall.app.beans.request.BaseRequestBean;
 import com.orange.mall.app.beans.request.RegisterBean;
 import com.orange.mall.app.beans.response.LoginResponseDataBean;
+import com.orange.mall.app.beans.response.RegisterResponseDataBean;
 import com.orange.mall.app.beans.response.ResponseBean;
 import com.orange.mall.app.constants.Api;
 import com.orange.mall.app.constants.Storage;
@@ -29,7 +30,7 @@ public class AccountModel {
 
     // 注册
     @POST(Api.REGISTER_PATH)
-    Call<ResponseBean<String>> register(@Body BaseRequestBean<RegisterBean> reqBody);
+    Call<ResponseBean<RegisterResponseDataBean>> register(@Body BaseRequestBean<RegisterBean> reqBody);
 
     // 忘记密码
     @POST(Api.FORGET_PASSWD_PATH)

@@ -3,7 +3,6 @@ package com.orange.mall.app.modules.main;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -16,11 +15,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.MenuItem;
-import android.webkit.JavascriptInterface;
 
 import com.github.javiersantos.appupdater.AppUpdater;
 import com.github.javiersantos.appupdater.AppUpdaterUtils;
@@ -32,14 +28,13 @@ import com.orange.mall.app.R;
 import com.orange.mall.app.adapters.ViewPagerFragmentAdapter;
 import com.orange.mall.app.constants.Api;
 import com.orange.mall.app.constants.Storage;
-import com.orange.mall.app.modules.login.LoginActivity;
 import com.orange.mall.app.utils.ActivityUtils;
+import com.orange.mall.app.widgets.SwipeViewPager;
 import com.orhanobut.hawk.Hawk;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class MainActivity extends AppCompatActivity
   implements CellsShowroomFragment.OnCellsShowroomFragmentInteractionListener,
@@ -133,7 +128,8 @@ UserCenterFragment.OnUserCenterFragmentInteractionListener {
 
 
   private void initViewPager() {
-    mViewPager = (ViewPager) findViewById(R.id.view_pager);
+    mViewPager = (SwipeViewPager) findViewById(R.id.view_pager);
+    ((SwipeViewPager) mViewPager).setSwipeable(false);
     mViewPager.setAdapter(mViewPagerFragmentAdapter);
     mViewPager.setCurrentItem(0);
     mViewPager.setOffscreenPageLimit(4);
@@ -169,13 +165,14 @@ UserCenterFragment.OnUserCenterFragmentInteractionListener {
 
     String token = Hawk.get(Storage.KEY_TOKEN);
 
-    mFragmentList.add(UserCenterFragment.newInstance(token, ""));
+    mFragmentList.add(NewsFragment.newInstance(token, ""));
     mFragmentList.add(CellsShowroomFragment.newInstance(token, ""));
     mFragmentList.add(MallFragment.newInstance(token, ""));
-    mFragmentList.add(NewsFragment.newInstance(token, ""));
+    mFragmentList.add(UserCenterFragment.newInstance(token, ""));
 
     mFragmentManager = getSupportFragmentManager();
     mViewPagerFragmentAdapter = new ViewPagerFragmentAdapter(mFragmentManager, mFragmentList);
+
   }
 
   /**

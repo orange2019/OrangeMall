@@ -6,6 +6,7 @@ import android.util.Log;
 import com.orange.mall.app.beans.request.BaseRequestBean;
 import com.orange.mall.app.beans.request.RegisterBean;
 import com.orange.mall.app.beans.request.VerifyCodeBean;
+import com.orange.mall.app.beans.response.RegisterResponseDataBean;
 import com.orange.mall.app.beans.response.ResponseBean;
 import com.orange.mall.app.manager.RequestManager;
 import com.orange.mall.app.models.AccountModel;
@@ -32,10 +33,10 @@ public class RegisterPresenter implements RegisterContract.Presenter {
   public void register(RegisterBean bean) {
     BaseRequestBean<RegisterBean> reqBean = RequestManager.getInstance().buildRequestData(bean, RegisterBean.class);
 
-    final Call<ResponseBean<String>> call = AccountModel.getService().register(reqBean);
-    Callback<ResponseBean<String>> callback = new Callback<ResponseBean<String>>() {
+    final Call<ResponseBean<RegisterResponseDataBean>> call = AccountModel.getService().register(reqBean);
+    Callback<ResponseBean<RegisterResponseDataBean>> callback = new Callback<ResponseBean<RegisterResponseDataBean>>() {
       @Override
-      public void onResponse(Call<ResponseBean<String>> call, Response<ResponseBean<String>> response) {
+      public void onResponse(Call<ResponseBean<RegisterResponseDataBean>> call, Response<ResponseBean<RegisterResponseDataBean>> response) {
         Log.i(TAG, response.body().toString());
         if (response.body().getCode() == 0) {
           mView.onRegisterSuccess();
@@ -45,7 +46,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
       }
 
       @Override
-      public void onFailure(Call<ResponseBean<String>> call, Throwable t) {
+      public void onFailure(Call<ResponseBean<RegisterResponseDataBean>> call, Throwable t) {
         mView.onRegisterFailed("注册失败,请重试");
       }
     };
